@@ -32,12 +32,15 @@ Metadata:
         Parameters:
          - "QSS3BucketName"
          - "QSS3KeyPrefix"
+         - "QSS3BucketRegion"
       
     ParameterLabels:
       QSS3BucketName:
         default: Quick Start S3 bucket name
       QSS3KeyPrefix:
         default: Quick Start S3 key prefix
+      QSS3BucketRegion:
+        default: Region of Quickstart bucket
       KMSEbsKeyArn:
         default: "EBS KMS Key ARN"
       HailS3BucketName:
@@ -79,6 +82,11 @@ Parameters:
     Description: "S3 key prefix for the Quick Start assets. Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/)."
     Type: "String"
 
+  QSS3BucketRegion:
+    Default: 'us-east-1'
+    Description: 'The AWS Region where the Quick Start S3 bucket (QSS3BucketName) is hosted.'
+    Type: String
+  
   KMSEbsKeyArn:
     Description: "(Optional) The full KMS Key ARN if region level EBS encryption is enabled. Note, this does NOT automatically encrypt your AMI."
     Default: ""
@@ -159,13 +167,20 @@ Parameters:
 Conditions:
 
     createVpc: !Equals [!Ref VPCTarget, "new"]
+    UsingDefaultBucket: !Equals
+    - !Ref QSS3BucketName
+    - 'aws-quickstart'
 
 Resources:
 
   core:
     Type: "AWS::CloudFormation::Stack"
     Properties:
-      TemplateURL: !Sub "https://${QSS3BucketName}.s3.amazonaws.com/${QSS3KeyPrefix}templates/hail-core.template.yaml"
+      TemplateURL:
+        !Sub
+          - 'https://${S3Bucket}.s3.${S3Region}.${AWS::URLSuffix}/${QSS3KeyPrefix}templates/hail-core.template.yaml'
+          - S3Region: !If [UsingDefaultBucket, !Ref 'AWS::Region', !Ref QSS3BucketRegion]
+            S3Bucket: !If [UsingDefaultBucket, !Sub '${QSS3BucketName}-${AWS::Region}', !Ref QSS3BucketName]
       Parameters:
         pHailBucket: !Ref HailS3BucketName
         pCreateHailBucket: !Ref CreateHailBucket
@@ -179,13 +194,18 @@ Resources:
         pVpcId: !If [createVpc, !GetAtt 'vpc.Outputs.VPCID', !Ref VPCId]
         QSS3BucketName: !Ref QSS3BucketName
         QSS3KeyPrefix: !Ref QSS3KeyPrefix
+        QSS3BucketRegion: !Ref QSS3BucketRegion
       TimeoutInMinutes: 5
 
   vpc:
     Type: "AWS::CloudFormation::Stack"
     Condition: createVpc
     Properties:
-      TemplateURL: !Sub "https://${QSS3BucketName}.s3.amazonaws.com/${QSS3KeyPrefix}submodules/quickstart-aws-vpc/templates/aws-vpc.template"
+      TemplateURL:
+        !Sub
+          - 'https://${S3Bucket}.s3.${S3Region}.${AWS::URLSuffix}/${QSS3KeyPrefix}submodules/quickstart-aws-vpc/templates/aws-vpc.template'
+          - S3Region: !If [UsingDefaultBucket, !Ref 'AWS::Region', !Ref QSS3BucketRegion]
+            S3Bucket: !If [UsingDefaultBucket, !Sub '${QSS3BucketName}-${AWS::Region}', !Ref QSS3BucketName]
       Parameters:
         AvailabilityZones: !Join
         - ','

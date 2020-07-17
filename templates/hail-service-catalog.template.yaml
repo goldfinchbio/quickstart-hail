@@ -3,6 +3,11 @@ Description: "Service Catalog Portfolio containing products for a Hail EMR clust
 
 Parameters:
 
+  QSS3BucketRegion:
+    Default: 'us-east-1'
+    Description: 'The AWS Region where the Quick Start S3 bucket (QSS3BucketName) is hosted.'
+    Type: String
+  
   QSS3BucketName:
     AllowedPattern: "^[0-9a-zA-Z]+([0-9a-zA-Z-]*[0-9a-zA-Z])*$"
     ConstraintDescription: "Quick Start bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-)."
@@ -16,6 +21,12 @@ Parameters:
     Default: "quickstart-hail/"
     Description: "S3 key prefix for the Quick Start assets. Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/)."
     Type: "String"
+
+Conditions:
+
+    UsingDefaultBucket: !Equals
+      - !Ref QSS3BucketName
+      - 'aws-quickstart'
 
 Resources:
 
@@ -34,7 +45,11 @@ Resources:
       Owner: "AWS"
       ProvisioningArtifactParameters:
         - Info:
-            LoadTemplateFromURL: !Sub "https://${QSS3BucketName}.s3.amazonaws.com/${QSS3KeyPrefix}templates/hail-emr.template.yaml"
+            LoadTemplateFromURL:
+              !Sub
+                - 'https://${S3Bucket}.s3.${S3Region}.${AWS::URLSuffix}/${QSS3KeyPrefix}templates/hail-emr.template.yaml'
+                - S3Region: !If [UsingDefaultBucket, !Ref 'AWS::Region', !Ref QSS3BucketRegion]
+                  S3Bucket: !If [UsingDefaultBucket, !Sub '${QSS3BucketName}-${AWS::Region}', !Ref QSS3BucketName]
 
   associationEmr:
     Type: "AWS::ServiceCatalog::PortfolioProductAssociation"
@@ -50,7 +65,11 @@ Resources:
       Owner: "AWS"
       ProvisioningArtifactParameters:
         - Info:
-            LoadTemplateFromURL: !Sub "https://${QSS3BucketName}.s3.amazonaws.com/${QSS3KeyPrefix}templates/hail-sagemaker.template.yaml"
+            LoadTemplateFromURL:
+              !Sub
+                - 'https://${S3Bucket}.s3.${S3Region}.${AWS::URLSuffix}/${QSS3KeyPrefix}templates/hail-sagemaker.template.yaml'
+                - S3Region: !If [UsingDefaultBucket, !Ref 'AWS::Region', !Ref QSS3BucketRegion]
+                  S3Bucket: !If [UsingDefaultBucket, !Sub '${QSS3BucketName}-${AWS::Region}', !Ref QSS3BucketName]
 
   associationSageMakerNotebook:
     Type: "AWS::ServiceCatalog::PortfolioProductAssociation"

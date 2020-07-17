@@ -1,1 +1,6 @@
-// placeholder
+
+=== Launch into a new VPC
+include::hail-master.template.adoc[]
+
+=== Launch into an existing VPC
+include::hail-core.template.adoc[]
