@@ -786,8 +786,8 @@ table p {
 <ul class="sectlevel2">
 <li><a href="#_sign_in_to_your_aws_account">Sign in to your AWS account</a></li>
 <li><a href="#_launch_the_quick_start">Launch the Quick Start</a></li>
-<li><a href="#_launch_into_a_new_vpc">Launch into a new VPC</a></li>
 <li><a href="#_launch_into_an_existing_vpc">Launch into an existing VPC</a></li>
+<li><a href="#_launch_into_a_new_vpc">Launch into a new VPC</a></li>
 </ul>
 </li>
 <li><a href="#_post_deployment_steps">Post deployment steps</a>
@@ -856,7 +856,7 @@ report bugs, or submit feature ideas for this Quick Start.
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Please know that we may share who uses AWS
+Amazon may share who uses AWS
 Quick Starts with the AWS Partner Network (APN) Partner that
 collaborated with AWS on the content of the Quick Start.
 </td>
@@ -1262,170 +1262,9 @@ Region', and 'Quick Start S3 key prefix', unless you are customizing the Quick S
 </div>
 </div>
 <div class="sect2">
-<h3 id="_launch_into_a_new_vpc">Launch into a new VPC</h3>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Network Configuration</caption>
-<colgroup>
-<col style="width: 16%;">
-<col style="width: 11%;">
-<col style="width: 73%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameter label (name)</th>
-<th class="tableblock halign-left valign-top">Default Value</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">VPC Target
-(<code>VPCTarget</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>existing</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Choose "new" to use the AWS VPC Quickstart to create a new VPC with 3 public and 3 private subnets. If you choose "existing", VPCId and SubnetId network parameters are required.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">New VPC CIDR
-(<code>VPCCIDR</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>10.0.0.0/16</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Required for a new VPC. A /16 address space is recommended for a new VPC.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Existing VPC ID
-(<code>VPCId</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Required for existing VPC target.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Existing Subnet ID
-(<code>VPCSubnetId</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Required for an existing VPC target. Subnet ID in the existing VPC in which EMR Cluster and SageMaker Notebook Instances will be launched. A private subnet is recommended.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Existing Subnet Type
-(<code>VPCSubnetType</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>private</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Required for an existing VPC target. Should match the type of subnet specified by Subnet Id. Type of subnet compute resources will be deployed in and also used to create custom AMIs. A private is recommended.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Hail Configuration</caption>
-<colgroup>
-<col style="width: 16%;">
-<col style="width: 11%;">
-<col style="width: 73%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameter label (name)</th>
-<th class="tableblock halign-left valign-top">Default Value</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Hail S3 Bucket Name
-(<code>HailS3BucketName</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the S3 bucket that stores EMR logs, cluster manifests, and VEP configuration files.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Create Hail S3 Bucket
-(<code>CreateHailBucket</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>yes</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Select No to use an existing bucket.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Sagemaker Home Directory S3 Bucket Name
-(<code>SageMakerS3BucketName</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the S3 bucket for common notebooks and SageMaker home directory backups.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Create SageMaker Home Directory S3 Bucket
-(<code>CreateSageMakerBucket</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>yes</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Select No to use an existing bucket.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EBS KMS Key ARN
-(<code>KMSEbsKeyArn</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) The full KMS Key ARN if region level EBS encryption is enabled. Note, this does NOT automatically encrypt your AMI.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. Tagging Configuration</caption>
-<colgroup>
-<col style="width: 16%;">
-<col style="width: 11%;">
-<col style="width: 73%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameter label (name)</th>
-<th class="tableblock halign-left valign-top">Default Value</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Environment Type
-(<code>TagEnvironmentType</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>development</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Environment type for default resource tagging.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Owner
-(<code>TagOwner</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) Owner for default resource tagging. Suggested values are &lt;User Name&gt;, &lt;Department Name&gt;, &lt;Project Name&gt;, etc.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. AWS Quick Start Configuration</caption>
-<colgroup>
-<col style="width: 16%;">
-<col style="width: 11%;">
-<col style="width: 73%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameter label (name)</th>
-<th class="tableblock halign-left valign-top">Default Value</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Quick Start S3 bucket name
-(<code>QSS3BucketName</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>aws-quickstart</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">S3 bucket name for the Quick Start assets. Quick Start bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Quick Start S3 key prefix
-(<code>QSS3KeyPrefix</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>quickstart-hail/</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">S3 key prefix for the Quick Start assets. Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Region of Quickstart bucket
-(<code>QSS3BucketRegion</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>us-east-1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The AWS Region where the Quick Start S3 bucket (QSS3BucketName) is hosted.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
 <h3 id="_launch_into_an_existing_vpc">Launch into an existing VPC</h3>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. AWS Quick Start Configuration</caption>
+<caption class="title">Table 1. AWS Quick Start Configuration</caption>
 <colgroup>
 <col style="width: 16%;">
 <col style="width: 11%;">
@@ -1460,7 +1299,7 @@ Region', and 'Quick Start S3 key prefix', unless you are customizing the Quick S
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. Network Settings</caption>
+<caption class="title">Table 2. Network Settings</caption>
 <colgroup>
 <col style="width: 16%;">
 <col style="width: 11%;">
@@ -1495,7 +1334,7 @@ Region', and 'Quick Start S3 key prefix', unless you are customizing the Quick S
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. Hail Settings</caption>
+<caption class="title">Table 3. Hail Settings</caption>
 <colgroup>
 <col style="width: 16%;">
 <col style="width: 11%;">
@@ -1542,7 +1381,7 @@ Region', and 'Quick Start S3 key prefix', unless you are customizing the Quick S
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. Tagging</caption>
+<caption class="title">Table 4. Tagging</caption>
 <colgroup>
 <col style="width: 16%;">
 <col style="width: 11%;">
@@ -1567,6 +1406,167 @@ Region', and 'Quick Start S3 key prefix', unless you are customizing the Quick S
 (<code>pTagOwner</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Optional - Owner of the resources.  Person/Department, etc.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_launch_into_a_new_vpc">Launch into a new VPC</h3>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. Network Configuration</caption>
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 11%;">
+<col style="width: 73%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter label (name)</th>
+<th class="tableblock halign-left valign-top">Default Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VPC Target
+(<code>VPCTarget</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>existing</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Choose "new" to use the AWS VPC Quickstart to create a new VPC with 3 public and 3 private subnets. If you choose "existing", VPCId and SubnetId network parameters are required.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">New VPC CIDR
+(<code>VPCCIDR</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>10.0.0.0/16</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Required for a new VPC. A /16 address space is recommended for a new VPC.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Existing VPC ID
+(<code>VPCId</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Required for existing VPC target.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Existing Subnet ID
+(<code>VPCSubnetId</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Required for an existing VPC target. Subnet ID in the existing VPC in which EMR Cluster and SageMaker Notebook Instances will be launched. A private subnet is recommended.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Existing Subnet Type
+(<code>VPCSubnetType</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>private</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Required for an existing VPC target. Should match the type of subnet specified by Subnet Id. Type of subnet compute resources will be deployed in and also used to create custom AMIs. A private is recommended.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. Hail Configuration</caption>
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 11%;">
+<col style="width: 73%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter label (name)</th>
+<th class="tableblock halign-left valign-top">Default Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hail S3 Bucket Name
+(<code>HailS3BucketName</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the S3 bucket that stores EMR logs, cluster manifests, and VEP configuration files.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create Hail S3 Bucket
+(<code>CreateHailBucket</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>yes</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Select No to use an existing bucket.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sagemaker Home Directory S3 Bucket Name
+(<code>SageMakerS3BucketName</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the S3 bucket for common notebooks and SageMaker home directory backups.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create SageMaker Home Directory S3 Bucket
+(<code>CreateSageMakerBucket</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>yes</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Select No to use an existing bucket.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EBS KMS Key ARN
+(<code>KMSEbsKeyArn</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) The full KMS Key ARN if region level EBS encryption is enabled. Note, this does NOT automatically encrypt your AMI.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 7. Tagging Configuration</caption>
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 11%;">
+<col style="width: 73%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter label (name)</th>
+<th class="tableblock halign-left valign-top">Default Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Environment Type
+(<code>TagEnvironmentType</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>development</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Environment type for default resource tagging.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Owner
+(<code>TagOwner</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) Owner for default resource tagging. Suggested values are &lt;User Name&gt;, &lt;Department Name&gt;, &lt;Project Name&gt;, etc.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 8. AWS Quick Start Configuration</caption>
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 11%;">
+<col style="width: 73%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter label (name)</th>
+<th class="tableblock halign-left valign-top">Default Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quick Start S3 bucket name
+(<code>QSS3BucketName</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>aws-quickstart</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S3 bucket name for the Quick Start assets. Quick Start bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quick Start S3 key prefix
+(<code>QSS3KeyPrefix</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>quickstart-hail/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S3 key prefix for the Quick Start assets. Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Region of Quickstart bucket
+(<code>QSS3BucketRegion</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>us-east-1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The AWS Region where the Quick Start S3 bucket (QSS3BucketName) is hosted.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2027,7 +2027,7 @@ and to share your customizations with others.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-07-23 00:22:33 UTC
+Last updated 2020-08-07 03:08:34 UTC
 </div>
 </div>
 </body>
