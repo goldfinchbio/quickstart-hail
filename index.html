@@ -822,7 +822,7 @@ table p {
 </div>
 <div class="paragraph text-center">
 <p><strong>July, 2020</strong><br>
-<em>Adam Perry, Privo IT + Adam Tebbe, Goldfinch Pharmaceuticals</em><br>
+<em>Adam Perry, Privo + Adam Tebbe, Goldfinch Pharmaceuticals</em><br>
 <em>Paul Underwood, AWS + Roy Hasson, AWS</em></p>
 </div>
 <div class="admonitionblock tip text-left">
@@ -839,7 +839,7 @@ report bugs, or submit feature ideas for this Quick Start.
 </table>
 </div>
 <div class="paragraph text-left">
-<p>This Quick Start was created by PrivoIT in collaboration with Amazon Web Services (AWS). <a href="http://aws.amazon.com/quickstart/" target="_blank" rel="noopener">Quick Starts</a> are automated reference deployments that use AWS CloudFormation templates to deploy key technologies on AWS, following AWS best practices.</p>
+<p>This Quick Start was created by Privo in collaboration with Amazon Web Services (AWS). <a href="http://aws.amazon.com/quickstart/" target="_blank" rel="noopener">Quick Starts</a> are automated reference deployments that use AWS CloudFormation templates to deploy key technologies on AWS, following AWS best practices.</p>
 </div>
 </div>
 </div>
@@ -847,7 +847,7 @@ report bugs, or submit feature ideas for this Quick Start.
 <h2 id="_overview">Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This Quick Start is for users who are looking to use an open-source library for scalable data exploration and analysis, with particular emphasis on genomics.</p>
+<p>This Quick Start is for users who want to use an open-source library for scalable data exploration and analysis, with particular emphasis on genomics.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -870,7 +870,7 @@ collaborated with AWS on the content of the Quick Start.
 <div class="sectionbody">
 <div class="paragraph">
 <p>Hail is maintained by a team in the <a href="https://www.nealelab.is">Neale</a> lab at the <a href="https://www.broadinstitute.org/stanley">Stanley Center for Psychiatric Research</a> of the <a href="https://www.broadinstitute.org/">Broad Institute of MIT and Harvard</a> and the <a href="https://www.atgu.mgh.harvard.edu/">Analytic and Translational Genetics Unit</a> of <a href="https://www.massgeneral.org">Massachusetts General Hospital</a>.
-This QuickStart packages up Hail into your AWS environment and makes it easy to spin up clusters and integrated notebooks for analysis.</p>
+This Quick Start packages Hail into your AWS environment and makes it easy to spin up clusters and integrated notebooks for analysis.</p>
 </div>
 </div>
 </div>
@@ -915,17 +915,17 @@ After you deploy the Quick Start, enable the <a href="https://docs.aws.amazon.co
 <div class="sectionbody">
 <div class="paragraph">
 <p>Deploying this Quick Start for a new virtual private cloud (VPC) with
-<strong>default parameters</strong> builds the following <em>Hail 0.2</em> environment in the
+<strong>default parameters</strong> builds the following Hail 0.2 environment in the
 AWS Cloud.</p>
 </div>
 <div id="architecture1" class="imageblock">
 <div class="content">
 <img src="images/architecture.png" alt="Architecture" width="648" height="439">
 </div>
-<div class="title">Figure 1. Quick Start architecture for <em>Hail 0.2</em> on AWS</div>
+<div class="title">Figure 1. Quick Start architecture for Hail 0.2 on AWS</div>
 </div>
 <div class="paragraph">
-<p>Once the Hail Service Catalog portfolio is deployed, you can begin spinning up Notebook Instances and Hail Clusters that can talk to each other via SparkMagic/Livy.</p>
+<p>After the Hail Service Catalog portfolio is deployed, you can spin up Notebook Instances and Hail clusters that can talk to each other through SparkMagic and Livy.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -938,22 +938,22 @@ AWS Cloud.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>4 AWS CodeBuild pipelines to support building various combinations of Hail 0.2.x releases, VEP versions, and LOFTEE.</p>
+<p>Four AWS CodeBuild pipelines to support building various combinations of Hail 0.2.x releases, Variant Effect Predictor (VEP) versions, and Loss-Of-Function Transcript Effect Estimator (LOFTEE) plug-ins.</p>
 </li>
 <li>
 <p>A Hail 0.2 AWS Service Catalog portfolio.</p>
 </li>
 <li>
-<p>A “Hail EMR Cluster” Service Catalog product which lets you stand up and tear down Hail 0.2 clusters on AWS EMR as needed.</p>
+<p>A Hail EMR Cluster Service Catalog product that lets you stand up and tear down Hail 0.2 clusters on Amazon EMR as needed.</p>
 </li>
 <li>
-<p>A “Hail SageMaker Notebook Instance” Service Catalog product that lets you stand up and tear down JupyterLab notebook environments that integrate with Hail clusters (via SparkMagic\Livy).</p>
+<p>A Hail SageMaker Notebook Instance Service Catalog product that lets you stand up and tear down JupyterLab Notebook environments that integrate with Hail clusters (through SparkMagic and Livy).</p>
 </li>
 <li>
-<p>An Amazon S3 bucket staging various artifacts related to Hail</p>
+<p>An Amazon S3 bucket for staging artifacts that are related to Hail.</p>
 </li>
 <li>
-<p>An S3 bucket used to back up Notebook environments launched.</p>
+<p>An Amazon S3 bucket to back up launched Notebook environments.</p>
 </li>
 <li>
 <p>An optional VPC configured with public and private subnets, according to AWS best practices, to provide you with your own virtual network on AWS.</p>
@@ -1145,15 +1145,15 @@ Certain regions are available on an opt-in basis. Refer to the AWS Documentation
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Deploy Hail 0.2 into a new VPC (end-to-end deployment)</strong>. This option builds a new AWS environment consisting of the VPC, subnets, NAT gateways, security groups, bastion hosts, and other infrastructure components. It then sets a number of AWS Parameter Store values with the appropriate resource IDs for things like VPC, subnets, and roles. Those parameters are then referenced automatically by the Hail 0.2 Service Catalog when you deploy Notebooks or Clusters.</p>
+<p><strong>Deploy Hail 0.2 into a new VPC (end-to-end deployment)</strong>. This option builds a new AWS environment that includes the VPC, subnets, NAT gateways, security groups, bastion hosts, and other infrastructure components. It then sets a number of AWS Parameter Store values with the appropriate resource IDs for components such as the VPC, subnets, and roles. The parameters are then referenced automatically by the Hail 0.2 Service Catalog when you deploy Notebooks or clusters.</p>
 </li>
 <li>
-<p><strong>Deploy Hail 0.2 into an existing VPC</strong>. This option provisions in your existing AWS infrastructure. This option will set the necessary AWS Parameter Store values used by the Hail 0.2 Service Catalog products to the existing resources you want to use.</p>
+<p><strong>Deploy Hail 0.2 into an existing VPC</strong>. This option provisions in your existing AWS infrastructure. It sets the necessary AWS Parameter Store values used by the Hail 0.2 Service Catalog products to the existing resources that you want to use.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The Quick Start provides a single template for both options. It also lets you configure CIDR blocks, instance types, Hail, VEP, and EMR settings, as discussed later in this guide.</p>
+<p>The Quick Start provides a single template for both options. It also lets you configure Classless Inter-Domain Routing (CIDR) blocks, instance types, Hail, VEP, and Amazon EMR settings, as discussed later in this guide.</p>
 </div>
 </div>
 </div>
@@ -1167,7 +1167,7 @@ Certain regions are available on an opt-in basis. Refer to the AWS Documentation
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Sign in to your AWS account at <a href="https://aws.amazon.com" class="bare">https://aws.amazon.com</a> with an IAM user role that has the necessary permissions. For details, see <a href="#planning-the-deployment">Planning the deployment</a> earlier in this guide.</p>
+<p>Sign in to your AWS account at <a href="https://aws.amazon.com" class="bare">https://aws.amazon.com</a> with an Identity and Access Management (IAM) user role that has the necessary permissions. For details, see <a href="#planning-the-deployment">Planning the deployment</a> earlier in this guide.</p>
 </li>
 <li>
 <p>Make sure that your AWS account is configured correctly, as discussed in the <a href="#technical-requirements">Technical requirements</a> section.</p>
@@ -1222,7 +1222,7 @@ If you’re deploying Hail 0.2 into an existing VPC, make sure that your VPC has
 </table>
 </div>
 <div class="paragraph">
-<p>Also, make sure that the domain name option in the DHCP options is configured as explained in the <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html">Amazon VPC documentation</a>. You provide your VPC settings when you launch the Quick Start.</p>
+<p>Also, make sure that the domain name option in the Dynamic Host Configuration Protocol (DHCP) options is configured as explained in the <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html">Amazon VPC documentation</a>. Provide your VPC settings when you launch the Quick Start.</p>
 </div>
 <div class="paragraph">
 <p>Each deployment takes about 10 minutes to complete.</p>
@@ -1230,7 +1230,7 @@ If you’re deploying Hail 0.2 into an existing VPC, make sure that your VPC has
 <div class="olist arabic">
 <ol class="arabic" start="2">
 <li>
-<p>Check the AWS Region that’s displayed in the upper-right corner of the navigation bar, and change it if necessary. This is where the network infrastructure for Hail 0.2 will be built. The template is launched in the us-east-1 Region by default.</p>
+<p>Check the AWS Region that’s displayed in the upper-right corner of the navigation bar, and change it if necessary. This Region is where the network infrastructure for Hail 0.2 is built. The template is launched in the us-east-1 Region by default.</p>
 </li>
 </ol>
 </div>
@@ -1428,10 +1428,10 @@ Region', and 'Quick Start S3 key prefix', unless you are customizing the Quick S
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">VPC Target
+<td class="tableblock halign-left valign-top"><p class="tableblock">VPC target
 (<code>VPCTarget</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>existing</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Choose "new" to use the AWS VPC Quickstart to create a new VPC with 3 public and 3 private subnets. If you choose "existing", VPCId and SubnetId network parameters are required.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Choose "new" to use the AWS VPC Quick Start to create a new VPC with three public and three private subnets. If you choose "existing", VPCId and SubnetId network parameters are required.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">New VPC CIDR
@@ -1446,16 +1446,16 @@ Region', and 'Quick Start S3 key prefix', unless you are customizing the Quick S
 <td class="tableblock halign-left valign-top"><p class="tableblock">Required for existing VPC target.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Existing Subnet ID
+<td class="tableblock halign-left valign-top"><p class="tableblock">Existing subnet ID
 (<code>VPCSubnetId</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Required for an existing VPC target. Subnet ID in the existing VPC in which EMR Cluster and SageMaker Notebook Instances will be launched. A private subnet is recommended.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Existing Subnet Type
+<td class="tableblock halign-left valign-top"><p class="tableblock">Existing subnet type
 (<code>VPCSubnetType</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>private</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Required for an existing VPC target. Should match the type of subnet specified by Subnet Id. Type of subnet compute resources will be deployed in and also used to create custom AMIs. A private is recommended.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Required for an existing VPC target. Should match the type of subnet specified by Subnet Id. Type of subnet compute resources will be deployed in and also used to create custom AMIs. A private subnet is recommended.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1475,25 +1475,25 @@ Region', and 'Quick Start S3 key prefix', unless you are customizing the Quick S
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Hail S3 Bucket Name
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hail S3 bucket name
 (<code>HailS3BucketName</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The name of the S3 bucket that stores EMR logs, cluster manifests, and VEP configuration files.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Create Hail S3 Bucket
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create Hail S3 bucket
 (<code>CreateHailBucket</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>yes</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Select No to use an existing bucket.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Sagemaker Home Directory S3 Bucket Name
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sagemaker home directory S3 bucket name
 (<code>SageMakerS3BucketName</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The name of the S3 bucket for common notebooks and SageMaker home directory backups.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Create SageMaker Home Directory S3 Bucket
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create SageMaker home directory S3 bucket
 (<code>CreateSageMakerBucket</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>yes</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Select No to use an existing bucket.</p></td>
@@ -1502,7 +1502,7 @@ Region', and 'Quick Start S3 key prefix', unless you are customizing the Quick S
 <td class="tableblock halign-left valign-top"><p class="tableblock">EBS KMS Key ARN
 (<code>KMSEbsKeyArn</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) The full KMS Key ARN if region level EBS encryption is enabled. Note, this does NOT automatically encrypt your AMI.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) The full KMS Key ARN if Region level EBS encryption is enabled. This does not automatically encrypt your AMI.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1522,7 +1522,7 @@ Region', and 'Quick Start S3 key prefix', unless you are customizing the Quick S
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Environment Type
+<td class="tableblock halign-left valign-top"><p class="tableblock">Environment type
 (<code>TagEnvironmentType</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>development</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Environment type for default resource tagging.</p></td>
@@ -1941,10 +1941,10 @@ image::../images/testing/Picture4.png[Picture4,width=648,height=439]</p>
 <h2 id="_best_practices_for_using_hail_0_2_on_aws">Best practices for using Hail 0.2 on AWS</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>While it is convenient to work with Hail on EMR through the notebook, sometimes we just want to get on the hosts and poke around. In the event you need to get onto the hosts, make sure you set “Allow SSM Shell Access to EMR Nodes” to true when you launch the cluster via Service Catalog.</p>
+<p>Although you can work with Hail on EMR through the Notebook, you might simply want to access and explore the hosts. If you need to access the hosts, make sure you set <strong>Allow SSM Shell Access to EMR Nodes</strong> to true when you launch the cluster through the Service Catalog.</p>
 </div>
 <div class="paragraph">
-<p>You can then start SSH sessions onto those node by using the “Start Session” feature in AWS Systems Manager Session Manager console. You can also start a session from your local machine using the AWS CLI or from a notebook’s JupyterLab console as demonstrated below:</p>
+<p>You can then start SSH sessions on those nodes by using the Start Session feature in AWS Systems Manager Session Manager console. You can also start a session from your local machine using the AWS Command Line Interface (AWS CLI) or a Notebook’s JupyterLab console, as demonstrated below:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1960,7 +1960,7 @@ image::../images/testing/Picture4.png[Picture4,width=648,height=439]</p>
 <p><strong>Q.</strong> I encountered a <strong>CREATE_FAILED</strong> error when I launched the Quick Start.</p>
 </div>
 <div class="paragraph">
-<p><strong>A.</strong> If AWS CloudFormation fails to create the stack, we recommend that you relaunch the template with <strong>Rollback on failure</strong> set to <strong>No</strong>. (This setting is under <strong>Advanced</strong> in the AWS CloudFormation console, <strong>Options</strong> page.) With this setting, the stack’s state is retained and the instance is left running, so you can troubleshoot the issue. (For Windows, look at the log files in %ProgramFiles%\Amazon\EC2ConfigService and C:\cfn\log.)</p>
+<p><strong>A.</strong> If AWS CloudFormation fails to create the stack, relaunch the template with the <strong>Rollback on failure</strong> set to <strong>No</strong>. (This setting is on the <strong>Options</strong> page under <strong>Advanced</strong> in the AWS CloudFormation console.) With this setting, the stack’s state is retained and the instance is left running, so you can troubleshoot the issue. (For Windows, look at the log files in %ProgramFiles%\Amazon\EC2ConfigService and C:\cfn\log.)</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -1969,7 +1969,7 @@ image::../images/testing/Picture4.png[Picture4,width=648,height=439]</p>
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-When you set <strong>Rollback on failure</strong> to <strong>Disabled</strong>, you continue to incur AWS charges for this stack. Please make sure to delete the stack when you finish troubleshooting.
+When you set <strong>Rollback on failure</strong> to <strong>Disabled</strong>, you continue to incur AWS charges for this stack. Make sure to delete the stack when you finish troubleshooting.
 </td>
 </tr>
 </table>
@@ -1981,7 +1981,7 @@ When you set <strong>Rollback on failure</strong> to <strong>Disabled</strong>, 
 <p><strong>Q.</strong> I encountered a size limitation error when I deployed the AWS CloudFormation templates.</p>
 </div>
 <div class="paragraph">
-<p><strong>A.</strong> We recommend that you launch the Quick Start templates from the links in this guide or from another S3 bucket. If you deploy the templates from a local copy on your computer or from a location other than an S3 bucket, you might encounter template size limitations. For more information about AWS CloudFormation quotas, see the <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html">AWS documentation</a>.</p>
+<p><strong>A.</strong> Launch the Quick Start templates from the links in this guide or from another S3 bucket. If you deploy the templates from a local copy on your computer or from a location other than an S3 bucket, you might encounter template size limitations. For more information about AWS CloudFormation quotas, see the <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html">AWS documentation</a>.</p>
 </div>
 </div>
 </div>
@@ -2011,7 +2011,7 @@ and to share your customizations with others.</p>
 </div>
 <hr>
 <div class="paragraph">
-<p>© 2020, Amazon Web Services, Inc. or its affiliates, and PrivoIT. All rights reserved.</p>
+<p>© 2020, Amazon Web Services, Inc. or its affiliates, and Privo. All rights reserved.</p>
 </div>
 <div class="sect3">
 <h4 id="_notices">Notices</h4>
@@ -2027,7 +2027,7 @@ and to share your customizations with others.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-08-07 03:08:34 UTC
+Last updated 2020-08-11 15:22:12 UTC
 </div>
 </div>
 </body>

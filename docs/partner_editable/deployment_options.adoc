@@ -2,7 +2,7 @@
 
 This Quick Start provides two deployment options:
 
-* *Deploy {partner-product-name} into a new VPC (end-to-end deployment)*. This option builds a new AWS environment consisting of the VPC, subnets, NAT gateways, security groups, bastion hosts, and other infrastructure components. It then sets a number of AWS Parameter Store values with the appropriate resource IDs for things like VPC, subnets, and roles. Those parameters are then referenced automatically by the Hail 0.2 Service Catalog when you deploy Notebooks or Clusters.
-* *Deploy {partner-product-name} into an existing VPC*. This option provisions in your existing AWS infrastructure. This option will set the necessary AWS Parameter Store values used by the Hail 0.2 Service Catalog products to the existing resources you want to use. 
+* *Deploy {partner-product-name} into a new VPC (end-to-end deployment)*. This option builds a new AWS environment that includes the VPC, subnets, NAT gateways, security groups, bastion hosts, and other infrastructure components. It then sets a number of AWS Parameter Store values with the appropriate resource IDs for components such as the VPC, subnets, and roles. The parameters are then referenced automatically by the Hail 0.2 Service Catalog when you deploy Notebooks or clusters.
+* *Deploy {partner-product-name} into an existing VPC*. This option provisions in your existing AWS infrastructure. It sets the necessary AWS Parameter Store values used by the Hail 0.2 Service Catalog products to the existing resources that you want to use. 
 
-The Quick Start provides a single template for both options. It also lets you configure CIDR blocks, instance types, Hail, VEP, and EMR settings, as discussed later in this guide.
+The Quick Start provides a single template for both options. It also lets you configure Classless Inter-Domain Routing (CIDR) blocks, instance types, Hail, VEP, and Amazon EMR settings, as discussed later in this guide.

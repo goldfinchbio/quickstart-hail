@@ -3,5 +3,5 @@
 // Include the benefits of using the software on AWS, and provide details on usage scenarios.
 
 Hail is maintained by a team in the https://www.nealelab.is[Neale] lab at the https://www.broadinstitute.org/stanley[Stanley Center for Psychiatric Research] of the https://www.broadinstitute.org/[Broad Institute of MIT and Harvard] and the https://www.atgu.mgh.harvard.edu/[Analytic and Translational Genetics Unit] of https://www.massgeneral.org[Massachusetts General Hospital].
-This QuickStart packages up Hail into your AWS environment and makes it easy to spin up clusters and integrated notebooks for analysis.
+This Quick Start packages Hail into your AWS environment and makes it easy to spin up clusters and integrated notebooks for analysis.
 

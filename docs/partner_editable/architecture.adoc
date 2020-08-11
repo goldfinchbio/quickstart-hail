@@ -1,21 +1,21 @@
 Deploying this Quick Start for a new virtual private cloud (VPC) with
-*default parameters* builds the following _{partner-product-name}_ environment in the
+*default parameters* builds the following {partner-product-name} environment in the
 AWS Cloud.
 
 [#architecture1]
-.Quick Start architecture for _{partner-product-name}_ on AWS
+.Quick Start architecture for {partner-product-name} on AWS
 image::../images/architecture.png[Architecture,width=648,height=439]
 
-Once the Hail Service Catalog portfolio is deployed, you can begin spinning up Notebook Instances and Hail Clusters that can talk to each other via SparkMagic/Livy.
+After the Hail Service Catalog portfolio is deployed, you can spin up Notebook Instances and Hail clusters that can talk to each other through SparkMagic and Livy.
 
 image::../images/overview.png[Overview,width=648,height=439]
 
 As shown in Figure 1, the Quick Start sets up the following:
 
-* 4 AWS CodeBuild pipelines to support building various combinations of Hail 0.2.x releases, VEP versions, and LOFTEE.
+* Four AWS CodeBuild pipelines to support building various combinations of Hail 0.2.x releases, Variant Effect Predictor (VEP) versions, and Loss-Of-Function Transcript Effect Estimator (LOFTEE) plug-ins.
 * A Hail 0.2 AWS Service Catalog portfolio.
-* A “Hail EMR Cluster” Service Catalog product which lets you stand up and tear down Hail 0.2 clusters on AWS EMR as needed.
-* A “Hail SageMaker Notebook Instance” Service Catalog product that lets you stand up and tear down JupyterLab notebook environments that integrate with Hail clusters (via SparkMagic\Livy).
-* An Amazon S3 bucket staging various artifacts related to Hail
-* An S3 bucket used to back up Notebook environments launched. 
+* A Hail EMR Cluster Service Catalog product that lets you stand up and tear down Hail 0.2 clusters on Amazon EMR as needed.
+* A Hail SageMaker Notebook Instance Service Catalog product that lets you stand up and tear down JupyterLab Notebook environments that integrate with Hail clusters (through SparkMagic and Livy).
+* An Amazon S3 bucket for staging artifacts that are related to Hail.
+* An Amazon S3 bucket to back up launched Notebook environments. 
 * An optional VPC configured with public and private subnets, according to AWS best practices, to provide you with your own virtual network on AWS.

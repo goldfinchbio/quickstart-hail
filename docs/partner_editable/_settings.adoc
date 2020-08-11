@@ -1,9 +1,9 @@
 :quickstart-project-name: quickstart-hail
 :partner-product-name: Hail 0.2
-:partner-company-name: PrivoIT
+:partner-company-name: Privo
 :doc-month: July
 :doc-year: 2020
-:partner-contributors: Adam Perry, Privo IT + Adam Tebbe, Goldfinch Pharmaceuticals
+:partner-contributors: Adam Perry, Privo + Adam Tebbe, Goldfinch Pharmaceuticals
 :quickstart-contributors: Paul Underwood, AWS + Roy Hasson, AWS
 :deployment_time: 10 minutes
 :default_deployment_region: us-east-1

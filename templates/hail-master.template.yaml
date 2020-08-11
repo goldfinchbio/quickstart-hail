@@ -44,27 +44,27 @@ Metadata:
       KMSEbsKeyArn:
         default: "EBS KMS Key ARN"
       HailS3BucketName:
-        default: "Hail S3 Bucket Name"
+        default: "Hail S3 bucket name"
       CreateHailBucket:
-        default: "Create Hail S3 Bucket"
+        default: "Create Hail S3 bucket"
       SageMakerS3BucketName:
-        default: "Sagemaker Home Directory S3 Bucket Name"
+        default: "Sagemaker home directory S3 bucket name"
       CreateSageMakerBucket:
-        default: "Create SageMaker Home Directory S3 Bucket"
+        default: "Create SageMaker home directory S3 bucket"
       TagOwner:
         default: "Owner"
       TagEnvironmentType:
-        default: "Environment Type"
+        default: "Environment type"
       VPCTarget:
-        default: "VPC Target"
+        default: "VPC target"
       VPCCIDR:
         default: "New VPC CIDR"
       VPCId:
         default: "Existing VPC ID"
       VPCSubnetId:
-        default: "Existing Subnet ID"
+        default: "Existing subnet ID"
       VPCSubnetType:
-        default: "Existing Subnet Type"
+        default: "Existing subnet type"
         
 Parameters:
 
@@ -88,7 +88,7 @@ Parameters:
     Type: String
   
   KMSEbsKeyArn:
-    Description: "(Optional) The full KMS Key ARN if region level EBS encryption is enabled. Note, this does NOT automatically encrypt your AMI."
+    Description: "(Optional) The full KMS Key ARN if Region level EBS encryption is enabled. This does not automatically encrypt your AMI."
     Default: ""
     Type: "String"
 
@@ -134,7 +134,7 @@ Parameters:
 
   VPCTarget:
     Type: "String"
-    Description: "Choose \"new\" to use the AWS VPC Quickstart to create a new VPC with 3 public and 3 private subnets. If you choose \"existing\", VPCId and SubnetId network parameters are required."
+    Description: "Choose \"new\" to use the AWS VPC Quick Start to create a new VPC with three public and three private subnets. If you choose \"existing\", VPCId and SubnetId network parameters are required."
     AllowedValues:
       - "new"
       - "existing"
@@ -157,7 +157,7 @@ Parameters:
     Default: ""
 
   VPCSubnetType:
-    Description: "Required for an existing VPC target. Should match the type of subnet specified by Subnet Id. Type of subnet compute resources will be deployed in and also used to create custom AMIs. A private is recommended."
+    Description: "Required for an existing VPC target. Should match the type of subnet specified by Subnet Id. Type of subnet compute resources will be deployed in and also used to create custom AMIs. A private subnet is recommended."
     Type: "String"
     AllowedValues:
       - "public"
@@ -227,7 +227,7 @@ Resources:
 Outputs:
 
   portfolio:
-    Description: "Service Catalog Portfolio"
+    Description: "Service catalog portfolio"
     Value: !GetAtt core.Outputs.portfolio
 
   codeBuildConsole:
@@ -235,9 +235,9 @@ Outputs:
     Value: !Sub "https://console.aws.amazon.com/codesuite/codebuild/projects?region=${AWS::Region}"
 
   bucketHail:
-    Description: "Hail S3 Bucket"
+    Description: "Hail S3 bucket"
     Value: !GetAtt core.Outputs.bucketHail
 
   bucketSageMaker:
-    Description: "SageMaker S3 Bucket"
+    Description: "SageMaker S3 bucket"
     Value: !GetAtt core.Outputs.bucketSageMaker

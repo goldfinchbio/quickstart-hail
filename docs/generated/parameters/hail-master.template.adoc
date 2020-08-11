@@ -2,27 +2,27 @@
 .Network Configuration
 [width="100%",cols="16%,11%,73%",options="header",]
 |===
-|Parameter label (name) |Default Value|Description|VPC Target
-(`VPCTarget`)|`existing`|Choose "new" to use the AWS VPC Quickstart to create a new VPC with 3 public and 3 private subnets. If you choose "existing", VPCId and SubnetId network parameters are required.|New VPC CIDR
+|Parameter label (name) |Default Value|Description|VPC target
+(`VPCTarget`)|`existing`|Choose "new" to use the AWS VPC Quick Start to create a new VPC with three public and three private subnets. If you choose "existing", VPCId and SubnetId network parameters are required.|New VPC CIDR
 (`VPCCIDR`)|`10.0.0.0/16`|Required for a new VPC. A /16 address space is recommended for a new VPC.|Existing VPC ID
-(`VPCId`)|`**__Requires Input__**`|Required for existing VPC target.|Existing Subnet ID
-(`VPCSubnetId`)|`**__Requires Input__**`|Required for an existing VPC target. Subnet ID in the existing VPC in which EMR Cluster and SageMaker Notebook Instances will be launched. A private subnet is recommended.|Existing Subnet Type
-(`VPCSubnetType`)|`private`|Required for an existing VPC target. Should match the type of subnet specified by Subnet Id. Type of subnet compute resources will be deployed in and also used to create custom AMIs. A private is recommended.
+(`VPCId`)|`**__Requires Input__**`|Required for existing VPC target.|Existing subnet ID
+(`VPCSubnetId`)|`**__Requires Input__**`|Required for an existing VPC target. Subnet ID in the existing VPC in which EMR Cluster and SageMaker Notebook Instances will be launched. A private subnet is recommended.|Existing subnet type
+(`VPCSubnetType`)|`private`|Required for an existing VPC target. Should match the type of subnet specified by Subnet Id. Type of subnet compute resources will be deployed in and also used to create custom AMIs. A private subnet is recommended.
 |===
 .Hail Configuration
 [width="100%",cols="16%,11%,73%",options="header",]
 |===
-|Parameter label (name) |Default Value|Description|Hail S3 Bucket Name
-(`HailS3BucketName`)|`**__Requires Input__**`|The name of the S3 bucket that stores EMR logs, cluster manifests, and VEP configuration files.|Create Hail S3 Bucket
-(`CreateHailBucket`)|`yes`|Select No to use an existing bucket.|Sagemaker Home Directory S3 Bucket Name
-(`SageMakerS3BucketName`)|`**__Requires Input__**`|The name of the S3 bucket for common notebooks and SageMaker home directory backups.|Create SageMaker Home Directory S3 Bucket
+|Parameter label (name) |Default Value|Description|Hail S3 bucket name
+(`HailS3BucketName`)|`**__Requires Input__**`|The name of the S3 bucket that stores EMR logs, cluster manifests, and VEP configuration files.|Create Hail S3 bucket
+(`CreateHailBucket`)|`yes`|Select No to use an existing bucket.|Sagemaker home directory S3 bucket name
+(`SageMakerS3BucketName`)|`**__Requires Input__**`|The name of the S3 bucket for common notebooks and SageMaker home directory backups.|Create SageMaker home directory S3 bucket
 (`CreateSageMakerBucket`)|`yes`|Select No to use an existing bucket.|EBS KMS Key ARN
-(`KMSEbsKeyArn`)|`**__Requires Input__**`|(Optional) The full KMS Key ARN if region level EBS encryption is enabled. Note, this does NOT automatically encrypt your AMI.
+(`KMSEbsKeyArn`)|`**__Requires Input__**`|(Optional) The full KMS Key ARN if Region level EBS encryption is enabled. This does not automatically encrypt your AMI.
 |===
 .Tagging Configuration
 [width="100%",cols="16%,11%,73%",options="header",]
 |===
-|Parameter label (name) |Default Value|Description|Environment Type
+|Parameter label (name) |Default Value|Description|Environment type
 (`TagEnvironmentType`)|`development`|Environment type for default resource tagging.|Owner
 (`TagOwner`)|`**__Requires Input__**`|(Optional) Owner for default resource tagging. Suggested values are <User Name>, <Department Name>, <Project Name>, etc.
 |===

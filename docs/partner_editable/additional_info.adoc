@@ -11,9 +11,9 @@ include::test_deployment.adoc[]
 == Best practices for using {partner-product-name} on AWS
 // Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed information.
 
-While it is convenient to work with Hail on EMR through the notebook, sometimes we just want to get on the hosts and poke around. In the event you need to get onto the hosts, make sure you set “Allow SSM Shell Access to EMR Nodes” to true when you launch the cluster via Service Catalog. 
+Although you can work with Hail on EMR through the Notebook, you might simply want to access and explore the hosts. If you need to access the hosts, make sure you set *Allow SSM Shell Access to EMR Nodes* to true when you launch the cluster through the Service Catalog. 
 
-You can then start SSH sessions onto those node by using the “Start Session” feature in AWS Systems Manager Session Manager console. You can also start a session from your local machine using the AWS CLI or from a notebook’s JupyterLab console as demonstrated below:
+You can then start SSH sessions on those nodes by using the Start Session feature in AWS Systems Manager Session Manager console. You can also start a session from your local machine using the AWS Command Line Interface (AWS CLI) or a Notebook’s JupyterLab console, as demonstrated below:
 
 image::../images/ssh.png[SSH,width=648,height=439]
 
