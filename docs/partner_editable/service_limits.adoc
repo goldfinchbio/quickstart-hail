@@ -10,6 +10,6 @@
 |r5.xlarge, m5.xlarge |1 each (per Hail Cluster)**
 |===
 
-*The VPC is optional. If you don't deploy the VPC, these resources won't be used.
+*The VPC is optional. If you don't deploy the VPC, these resources aren't used.
 
-**These are the defaults. You can change instance types for both the notebook and cluster nodes. You can also specify more nodes in your cluster if you choose.
+**These are the defaults. You can change instance types for both the Notebook and cluster nodes. You can also specify more nodes in your cluster.

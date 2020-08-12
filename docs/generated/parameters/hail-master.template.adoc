@@ -2,34 +2,34 @@
 .Network Configuration
 [width="100%",cols="16%,11%,73%",options="header",]
 |===
-|Parameter label (name) |Default Value|Description|VPC target
+|Parameter label (name) |Default value|Description|VPC target
 (`VPCTarget`)|`existing`|Choose "new" to use the AWS VPC Quick Start to create a new VPC with three public and three private subnets. If you choose "existing", VPCId and SubnetId network parameters are required.|New VPC CIDR
 (`VPCCIDR`)|`10.0.0.0/16`|Required for a new VPC. A /16 address space is recommended for a new VPC.|Existing VPC ID
-(`VPCId`)|`**__Requires Input__**`|Required for existing VPC target.|Existing subnet ID
-(`VPCSubnetId`)|`**__Requires Input__**`|Required for an existing VPC target. Subnet ID in the existing VPC in which EMR Cluster and SageMaker Notebook Instances will be launched. A private subnet is recommended.|Existing subnet type
+(`VPCId`)|`**__Requires input__**`|Required for existing VPC target.|Existing subnet ID
+(`VPCSubnetId`)|`**__Requires input__**`|Required for an existing VPC target. Subnet ID in the existing VPC in which EMR Cluster and SageMaker Notebook Instances will be launched. A private subnet is recommended.|Existing subnet type
 (`VPCSubnetType`)|`private`|Required for an existing VPC target. Should match the type of subnet specified by Subnet Id. Type of subnet compute resources will be deployed in and also used to create custom AMIs. A private subnet is recommended.
 |===
 .Hail Configuration
 [width="100%",cols="16%,11%,73%",options="header",]
 |===
-|Parameter label (name) |Default Value|Description|Hail S3 bucket name
-(`HailS3BucketName`)|`**__Requires Input__**`|The name of the S3 bucket that stores EMR logs, cluster manifests, and VEP configuration files.|Create Hail S3 bucket
+|Parameter label (name) |Default value|Description|Hail S3 bucket name
+(`HailS3BucketName`)|`**__Requires input__**`|The name of the S3 bucket that stores EMR logs, cluster manifests, and VEP configuration files.|Create Hail S3 bucket
 (`CreateHailBucket`)|`yes`|Select No to use an existing bucket.|Sagemaker home directory S3 bucket name
-(`SageMakerS3BucketName`)|`**__Requires Input__**`|The name of the S3 bucket for common notebooks and SageMaker home directory backups.|Create SageMaker home directory S3 bucket
+(`SageMakerS3BucketName`)|`**__Requires input__**`|The name of the S3 bucket for common notebooks and SageMaker home directory backups.|Create SageMaker home directory S3 bucket
 (`CreateSageMakerBucket`)|`yes`|Select No to use an existing bucket.|EBS KMS Key ARN
-(`KMSEbsKeyArn`)|`**__Requires Input__**`|(Optional) The full KMS Key ARN if Region level EBS encryption is enabled. This does not automatically encrypt your AMI.
+(`KMSEbsKeyArn`)|`**__Requires input__**`|(Optional) The full KMS Key ARN if Region level EBS encryption is enabled. This does not automatically encrypt your AMI.
 |===
 .Tagging Configuration
 [width="100%",cols="16%,11%,73%",options="header",]
 |===
-|Parameter label (name) |Default Value|Description|Environment type
+|Parameter label (name) |Default value|Description|Environment type
 (`TagEnvironmentType`)|`development`|Environment type for default resource tagging.|Owner
-(`TagOwner`)|`**__Requires Input__**`|(Optional) Owner for default resource tagging. Suggested values are <User Name>, <Department Name>, <Project Name>, etc.
+(`TagOwner`)|`**__Requires input__**`|(Optional) Owner for default resource tagging. Suggested values are <User Name>, <Department Name>, <Project Name>, etc.
 |===
 .AWS Quick Start Configuration
 [width="100%",cols="16%,11%,73%",options="header",]
 |===
-|Parameter label (name) |Default Value|Description|Quick Start S3 bucket name
+|Parameter label (name) |Default value|Description|Quick Start S3 bucket name
 (`QSS3BucketName`)|`aws-quickstart`|S3 bucket name for the Quick Start assets. Quick Start bucket name can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).|Quick Start S3 key prefix
 (`QSS3KeyPrefix`)|`quickstart-hail/`|S3 key prefix for the Quick Start assets. Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).|Region of Quickstart bucket
 (`QSS3BucketRegion`)|`us-east-1`|The AWS Region where the Quick Start S3 bucket (QSS3BucketName) is hosted.
