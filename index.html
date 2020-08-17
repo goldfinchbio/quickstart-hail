@@ -869,13 +869,13 @@ collaborated with AWS on the content of the Quick Start.
 <h2 id="_hail_0_2_on_aws">Hail 0.2 on AWS</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This Quick Start, built in partnership with Privo IT, simplifies building, managing, and interacting with Hail clusters in your AWS account. Hail is an open-source library built for Apache Spark to enable scalable data exploration and analysis, with a particular emphasis on genomics.</p>
+<p>This Quick Start, built with collaboration from Privo IT, simplifies building, managing, and interacting with Hail clusters in your AWS account. Hail is an open-source library built for Apache Spark to enable scalable data exploration and analysis, with a particular emphasis on genomics.</p>
 </div>
 <div class="paragraph">
 <p>Hail makes it easy to use Spark programming techniques to process genetic data (Genomic Dataframes) and simplifies dealing with multiple input formats by unifying into a common data structure (Hail MatrixTable). Using Hail, researchers can perform genomic analysis more quickly and efficiently.</p>
 </div>
 <div class="paragraph">
-<p>This Quick Start uses Amazon EMR to power Hail with Apache Spark to scale large datasets horizontally across numerous instances, including large production-scale genome‐wide association studies (GWAS) computation or single-node ad-hoc processing.</p>
+<p>This Quick Start uses Amazon Elastic MapReduce (EMR) to power Hail with Apache Spark to scale large datasets horizontally across numerous instances, including large production-scale genome‐wide association studies (GWAS) computation or single-node ad-hoc processing.</p>
 </div>
 <div class="paragraph">
 <p>Hail is maintained by a team in the <a href="https://www.nealelab.is">Neale</a> lab at the <a href="https://www.broadinstitute.org/stanley">Stanley Center for Psychiatric Research</a> of the <a href="https://www.broadinstitute.org/">Broad Institute of MIT and Harvard</a> and the <a href="https://www.atgu.mgh.harvard.edu/">Analytic and Translational Genetics Unit</a> of <a href="https://www.massgeneral.org">Massachusetts General Hospital</a>.
@@ -1211,10 +1211,10 @@ You are responsible for the cost of the AWS services used while running this Qui
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://qs_launch_link" target="_blank" rel="noopener">Deploy Hail 0.2 into a new VPC on AWS</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://fwd.aws/dPJ7W" target="_blank" rel="noopener">Deploy Hail 0.2 into a new VPC on AWS</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://qs_launch_link" target="_blank" rel="noopener">Deploy Hail 0.2 into an existing VPC on AWS</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://fwd.aws/dPJ7W" target="_blank" rel="noopener">Deploy Hail 0.2 into an existing VPC on AWS</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -1613,7 +1613,7 @@ Region</code>, and <code>Quick Start S3 key prefix</code>. Changing these parame
 <div class="sect2">
 <h3 id="_grant_permissions_to_the_hail_0_2_service_catalog_portfolio">Grant permissions to the Hail 0.2 Service Catalog Portfolio</h3>
 <div class="paragraph">
-<p>Open the AWS Service Catalog console and select the “Hail Products” portfolio</p>
+<p>Open the AWS Service Catalog console and choose the <strong>Hail Products</strong> portfolio.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1621,7 +1621,7 @@ Region</code>, and <code>Quick Start S3 key prefix</code>. Changing these parame
 </div>
 </div>
 <div class="paragraph">
-<p>Click on the “Groups, roles, and users (1)” tab and then click the “Add groups, roles, users” button”.</p>
+<p>Choose the <strong>Groups, roles, and users (1)</strong> tab and then choose the <strong>Add groups, roles, users</strong> button.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1629,7 +1629,7 @@ Region</code>, and <code>Quick Start S3 key prefix</code>. Changing these parame
 </div>
 </div>
 <div class="paragraph">
-<p>Select the IAM users/roles/groups that you want to grant the ability to launch Hail clusters or notebooks. For example, I’m giving access to an IAM user below. Even though you launched the catalog, you still need to explicitly grant yourself permissions this way. So don’t forget to grant yourself access.</p>
+<p>Choose the IAM users/roles/groups that you want to grant the ability to launch Hail clusters or Notebooks. For example, if you are giving access to an IAM user, even though you launched the catalog, you still must explicitly grant yourself permissions this way. Don’t forget to grant yourself access.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1640,14 +1640,14 @@ Region</code>, and <code>Quick Start S3 key prefix</code>. Changing these parame
 <div class="sect2">
 <h3 id="_launch_a_hail_cluster">Launch a Hail Cluster</h3>
 <div class="paragraph">
-<p>Return to Service Catalog and click on the topmost “Products” link on the left gutter. Users who are not service catalogs administrators and visit the service catalog in the console will be taken directly to this location.</p>
+<p>Return to the Service Catalog and choose the <strong>Products</strong> link at the top on the left gutter. Non-administrators who visit the Service Catalog in the console are taken directly to this location.</p>
 </div>
 <div class="paragraph">
-<p>Click on the stacked Dots on the “Hail EMR Cluster” product and choose the “Launch Product” button.
+<p>Select the stacked dots on the Hail EMR Cluster product and choose <strong>Launch Product</strong>.
 image::../images/testing/Picture4.png[Picture4,width=648,height=439]</p>
 </div>
 <div class="paragraph">
-<p>Provide a name for this Hail cluster, click next, and then you will be presented with the following Hail cluster options.</p>
+<p>Provide a name for the Hail cluster and choose <strong>Next</strong> to see the following Hail cluster options.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 9. Cluster Primary Settings</caption>
@@ -1672,7 +1672,7 @@ image::../images/testing/Picture4.png[Picture4,width=648,height=439]</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Hail AMI</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">''</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) Custom AMI, specific version from the public AMI list, or empty value.  If empty, the latest public Hail with VEP AMI will be used.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) Custom AMI, specific version from the public AMI list, or empty value.  If empty, the latest public Hail with VEP AMI is used.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">EMR Release</p></td>
@@ -1692,12 +1692,12 @@ image::../images/testing/Picture4.png[Picture4,width=648,height=439]</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Instance Termination Protection</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Select “true” to enable instance termination protection on Master and Core nodes of the cluster.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Choose <strong>True</strong> to enable instance termination protection on Master and Core nodes of the cluster.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Allow SSM Shell Access from SageMaker Notebook Instances</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Select “true” to allow SSM Shell access to cluster nodes from SageMaker Notebook instances. To fully enable, this same setting must also be set to “true” when creating SageMaker Notebook Instances.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Choose <strong>True</strong> to allow SSM Shell access to cluster nodes from SageMaker Notebook instances. To fully enable the setting, select <strong>True</strong> when creating SageMaker notebook instances.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1820,7 +1820,7 @@ image::../images/testing/Picture4.png[Picture4,width=648,height=439]</p>
 </tbody>
 </table>
 <div class="paragraph">
-<p>Proceed through the Service Catalog wizard accepting default values for the “Tag Options”, “Notifications”, and “Review” phases of the wizard and then click the “Launch Button”.</p>
+<p>Proceed through the Service Catalog wizard accepting default values for the <strong>Tag Options</strong>, <strong>Notifications</strong>, and <strong>Review</strong> phases of the wizard and then choose <strong>Launch</strong>.</p>
 </div>
 <div class="paragraph">
 <p>It will look like this while your cluster is being provisioned:</p>
@@ -1842,7 +1842,7 @@ image::../images/testing/Picture4.png[Picture4,width=648,height=439]</p>
 <div class="sect2">
 <h3 id="_launch_a_hail_notebook">Launch a Hail Notebook</h3>
 <div class="paragraph">
-<p>Go back to Service Catalog’s Product list page, select the ‘Hail SageMaker Notebook Instance’ and choose ‘Launch product’. Provide a name for your Service Catalog product launch in the “Product version” phase of the launch wizard. Supply the following parameters when you get to the “Parameters” phase.</p>
+<p>Go back to Service Catalog’s product list page, choose the <strong>Hail SageMaker Notebook Instance</strong> and choose <strong>Launch product</strong>. Provide a name for your Service Catalog product launch in the <strong>Product version</strong> phase of the launch wizard. Supply the following parameters when you reach the <strong>Parameters</strong> phase.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 14. Instance Details</caption>
@@ -1862,22 +1862,22 @@ image::../images/testing/Picture4.png[Picture4,width=648,height=439]</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Instance Name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>Requires input</em></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Used as the name of the notebook instance and S3 backup location. Username is recommend - E.g. jsmith</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used as the name of the notebook instance and S3 backup location. User name is recommended - E.g. jsmith</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Instance Type</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ml.t3.medium</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Instance type to use for the Notebook Instance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Instance type to use for the notebook instance</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Volume Size</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Size in GB of the EBS volume used by the Notebook Instance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Size in GB of the EBS volume used by the notebook instance</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Allow SSM Shell Access to EMR Nodes</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Select “true” to allow SSM Shell access to cluster nodes from SageMaker Notebook instances. To fully enable, this same setting must also be set to “true” when creating an EMR cluster.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Choose <strong>True</strong> to allow SSM Shell access to cluster nodes from SageMaker notebook instances. To be fully enabled, set this setting to <strong>True</strong> when creating an EMR cluster.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1909,7 +1909,7 @@ image::../images/testing/Picture4.png[Picture4,width=648,height=439]</p>
 </tbody>
 </table>
 <div class="paragraph">
-<p>Proceed through the “Tag Options”, “Notificatons”, and “Review” phases of the wizard accepting all of the defaults and click “Launch”.</p>
+<p>Proceed through the <strong>Tag Options</strong>, <strong>Notificatons</strong>, and <strong>Review</strong> phases of the wizard. Accept the default settings and choose <strong>Launch</strong>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1917,7 +1917,7 @@ image::../images/testing/Picture4.png[Picture4,width=648,height=439]</p>
 </div>
 </div>
 <div class="paragraph">
-<p>It should look like the following once the notebook is completed.</p>
+<p>It should look like the following once the Notebook is completed.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1928,7 +1928,7 @@ image::../images/testing/Picture4.png[Picture4,width=648,height=439]</p>
 <div class="sect2">
 <h3 id="_open_the_notebook_connect_to_the_cluster_and_conquer">Open the notebook, connect to the cluster, and conquer</h3>
 <div class="paragraph">
-<p>Go to Amazon SageMaker in the web console, and select “Notebook instances” in the left gutter. You will see a notebook instance with the ‘name’ tag you specified when you launched the notebook from Service Catalog. Select that notebook instance and click the “Open JupyterLab” hyperlink.</p>
+<p>Go to Amazon SageMaker in the web console, and choose <strong>Notebook instances</strong> in the left gutter. You will see a notebook instance with the <strong>name</strong> tag you specified when you launched the notebook from the Service Catalog. Select that Notebook instance and select the <strong>Open JupyterLab</strong> hyperlink.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1936,7 +1936,7 @@ image::../images/testing/Picture4.png[Picture4,width=648,height=439]</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Once the notebook launches, navigate to the “common-notebooks” folder to see some example notebooks that show how to connect to the EMR cluster and begin your Hail session.</p>
+<p>Once the notebook launches, navigate to the <strong>common-notebooks</strong> folder to see example Notebooks that show how to connect to the EMR cluster and begin your Hail session.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -2036,7 +2036,7 @@ and to share your customizations with others.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-08-14 22:17:30 UTC
+Last updated 2020-08-17 13:18:21 UTC
 </div>
 </div>
 </body>
