@@ -869,17 +869,17 @@ collaborated with AWS on the content of the Quick Start.
 <h2 id="_hail_0_2_on_aws">Hail 0.2 on AWS</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This Quick Start, built with collaboration from Privo IT, simplifies building, managing, and interacting with Hail clusters in your AWS account. Hail is an open-source library built for Apache Spark to enable scalable data exploration and analysis, with a particular emphasis on genomics.</p>
+<p>This Quick Start, built in collaboration with Privo IT, simplifies building, managing, and interacting with Hail 0.2 clusters in your AWS account. Hail 0.2 is an open-source library built for Apache Spark to enable scalable data exploration and analysis, with a particular emphasis on genomics.</p>
 </div>
 <div class="paragraph">
-<p>Hail makes it easy to use Spark programming techniques to process genetic data (Genomic Dataframes) and simplifies dealing with multiple input formats by unifying into a common data structure (Hail MatrixTable). Using Hail, researchers can perform genomic analysis more quickly and efficiently.</p>
+<p>Using Hail 0.2, researchers can perform genomic analysis more quickly and efficiently. Hail 0.2 makes it easy to use Spark programming techniques to process genetic data (Genomic Dataframes). It also simplifies dealing with multiple input formats by unifying into a common data structure (Hail MatrixTable).</p>
 </div>
 <div class="paragraph">
-<p>This Quick Start uses Amazon Elastic MapReduce (EMR) to power Hail with Apache Spark to scale large datasets horizontally across numerous instances, including large production-scale genome‐wide association studies (GWAS) computation or single-node ad-hoc processing.</p>
+<p>This Quick Start uses Amazon EMR to power Hail 0.2 with Apache Spark to scale large datasets horizontally across numerous instances, including large production-scale genome‐wide association studies (GWAS) computation or single-node ad-hoc processing.</p>
 </div>
 <div class="paragraph">
-<p>Hail is maintained by a team in the <a href="https://www.nealelab.is">Neale</a> lab at the <a href="https://www.broadinstitute.org/stanley">Stanley Center for Psychiatric Research</a> of the <a href="https://www.broadinstitute.org/">Broad Institute of MIT and Harvard</a> and the <a href="https://www.atgu.mgh.harvard.edu/">Analytic and Translational Genetics Unit</a> of <a href="https://www.massgeneral.org">Massachusetts General Hospital</a>.
-This Quick Start packages Hail into your AWS environment and makes it easy to spin up clusters and integrated Notebooks for analysis.</p>
+<p>Hail 0.2 is maintained by a team in the <a href="https://www.nealelab.is">Neale</a> lab at the <a href="https://www.broadinstitute.org/stanley">Stanley Center for Psychiatric Research</a> of the <a href="https://www.broadinstitute.org/">Broad Institute of MIT and Harvard</a> and the <a href="https://www.atgu.mgh.harvard.edu/">Analytic and Translational Genetics Unit</a> of <a href="https://www.massgeneral.org">Massachusetts General Hospital</a>.
+This Quick Start packages Hail 0.2 into your AWS environment and makes it easy to spin up clusters and integrated Notebooks for analysis.</p>
 </div>
 </div>
 </div>
@@ -934,7 +934,7 @@ AWS Cloud.</p>
 <div class="title">Figure 1. Quick Start architecture for Hail 0.2 on AWS</div>
 </div>
 <div class="paragraph">
-<p>After the Hail Service Catalog portfolio is deployed, you can spin up Notebook Instances and Hail clusters that can talk to each other through SparkMagic and Livy.</p>
+<p>After the Hail Service Catalog portfolio is deployed, you can spin up Notebook instances and Hail 0.2 clusters that can talk to each other through SparkMagic and Livy.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -947,7 +947,7 @@ AWS Cloud.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>A Hail 0.2 AWS Service Catalog portfolio.</p>
+<p>A Hail 0.2 AWS Service Catalog portfolio, allowing you to create and manage your own Hail 0.2 clusters.</p>
 </li>
 <li>
 <p>Four AWS CodeBuild pipelines to support building various combinations of Hail 0.2.x releases, Variant Effect Predictor (VEP) versions, and Loss-Of-Function Transcript Effect Estimator (LOFTEE) plug-ins.</p>
@@ -959,7 +959,7 @@ AWS Cloud.</p>
 <p>A Hail EMR Cluster Service Catalog product that lets you stand up and tear down Hail 0.2 clusters on Amazon EMR as needed.</p>
 </li>
 <li>
-<p>An Amazon S3 bucket to back up launched Notebook environments.</p>
+<p>A SageMaker S3 bucket to back up launched Notebook environments.</p>
 </li>
 <li>
 <p>An Amazon S3 bucket for staging artifacts that are related to Hail.</p>
@@ -1163,6 +1163,9 @@ Certain regions are available on an opt-in basis. Refer to the AWS Documentation
 </div>
 <div class="paragraph">
 <p>The Quick Start provides a single template for both options. It also lets you configure Classless Inter-Domain Routing (CIDR) blocks, instance types, Hail, VEP, and Amazon EMR settings, as discussed later in this guide.</p>
+</div>
+<div class="paragraph">
+<p>For details about operations, maintenance, and cluster management, see the <a href="https://fwd.aws/Ww6Yz">readme file</a>.</p>
 </div>
 </div>
 </div>
@@ -1621,7 +1624,7 @@ Region</code>, and <code>Quick Start S3 key prefix</code>. Changing these parame
 </div>
 </div>
 <div class="paragraph">
-<p>Choose the <strong>Groups, roles, and users (1)</strong> tab and then choose the <strong>Add groups, roles, users</strong> button.</p>
+<p>Choose the <strong>Groups, roles, and users (1)</strong> tab, and then choose the <strong>Add groups, roles, users</strong> button.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1629,7 +1632,7 @@ Region</code>, and <code>Quick Start S3 key prefix</code>. Changing these parame
 </div>
 </div>
 <div class="paragraph">
-<p>Choose the IAM users/roles/groups that you want to grant the ability to launch Hail clusters or Notebooks. For example, if you are giving access to an IAM user, even though you launched the catalog, you still must explicitly grant yourself permissions this way. Don’t forget to grant yourself access.</p>
+<p>Choose the IAM users/roles/groups that you want to grant the ability to launch Hail 0.2 clusters or Notebooks. For example, if you are giving access to an IAM user, even though you launched the catalog, you still must explicitly grant yourself permissions this way. Don’t forget to grant yourself access.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1643,11 +1646,11 @@ Region</code>, and <code>Quick Start S3 key prefix</code>. Changing these parame
 <p>Return to the Service Catalog and choose the <strong>Products</strong> link at the top on the left gutter. Non-administrators who visit the Service Catalog in the console are taken directly to this location.</p>
 </div>
 <div class="paragraph">
-<p>Select the stacked dots on the Hail EMR Cluster product and choose <strong>Launch Product</strong>.
+<p>Select the stacked dots on the Hail 0.2 EMR Cluster product and choose <strong>Launch Product</strong>.
 image::../images/testing/Picture4.png[Picture4,width=648,height=439]</p>
 </div>
 <div class="paragraph">
-<p>Provide a name for the Hail cluster and choose <strong>Next</strong> to see the following Hail cluster options.</p>
+<p>Provide a name for the Hail 0.2 cluster and choose <strong>Next</strong> to see the following Hail 0.2 cluster options.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 9. Cluster Primary Settings</caption>
@@ -1820,7 +1823,7 @@ image::../images/testing/Picture4.png[Picture4,width=648,height=439]</p>
 </tbody>
 </table>
 <div class="paragraph">
-<p>Proceed through the Service Catalog wizard accepting default values for the <strong>Tag Options</strong>, <strong>Notifications</strong>, and <strong>Review</strong> phases of the wizard and then choose <strong>Launch</strong>.</p>
+<p>Proceed through the Service Catalog wizard accepting default values for the <strong>Tag Options</strong>, <strong>Notifications</strong>, and <strong>Review</strong> phases of the wizard, and then choose <strong>Launch</strong>.</p>
 </div>
 <div class="paragraph">
 <p>It will look like this while your cluster is being provisioned:</p>
@@ -1928,7 +1931,7 @@ image::../images/testing/Picture4.png[Picture4,width=648,height=439]</p>
 <div class="sect2">
 <h3 id="_open_the_notebook_connect_to_the_cluster_and_conquer">Open the notebook, connect to the cluster, and conquer</h3>
 <div class="paragraph">
-<p>Go to Amazon SageMaker in the web console, and choose <strong>Notebook instances</strong> in the left gutter. You will see a notebook instance with the <strong>name</strong> tag you specified when you launched the notebook from the Service Catalog. Select that Notebook instance and select the <strong>Open JupyterLab</strong> hyperlink.</p>
+<p>Go to SageMaker in the web console, and choose <strong>Notebook instances</strong> in the left gutter. You will see a notebook instance with the <strong>name</strong> tag you specified when you launched the notebook from the Service Catalog. Select that Notebook instance and select the <strong>Open JupyterLab</strong> hyperlink.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1936,7 +1939,7 @@ image::../images/testing/Picture4.png[Picture4,width=648,height=439]</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Once the notebook launches, navigate to the <strong>common-notebooks</strong> folder to see example Notebooks that show how to connect to the EMR cluster and begin your Hail session.</p>
+<p>Once the Notebook launches, navigate to the <strong>common-notebooks</strong> folder to see example Notebooks that show how to connect to the EMR cluster and begin your Hail 0.2 session.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -2036,7 +2039,7 @@ and to share your customizations with others.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-08-17 13:18:21 UTC
+Last updated 2020-08-18 13:12:58 UTC
 </div>
 </div>
 </body>

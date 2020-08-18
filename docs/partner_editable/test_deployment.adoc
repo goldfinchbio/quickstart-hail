@@ -5,11 +5,11 @@ Open the AWS Service Catalog console and choose the *Hail Products* portfolio.
 
 image::../images/testing/Picture1.png[Picture1,width=648,height=439]
 
-Choose the *Groups, roles, and users (1)* tab and then choose the *Add groups, roles, users* button.
+Choose the *Groups, roles, and users (1)* tab, and then choose the *Add groups, roles, users* button.
 
 image::../images/testing/Picture2.png[Picture2,width=648,height=439]
 
-Choose the IAM users/roles/groups that you want to grant the ability to launch Hail clusters or Notebooks. For example, if you are giving access to an IAM user, even though you launched the catalog, you still must explicitly grant yourself permissions this way. Don’t forget to grant yourself access. 
+Choose the IAM users/roles/groups that you want to grant the ability to launch {partner-product-name} clusters or Notebooks. For example, if you are giving access to an IAM user, even though you launched the catalog, you still must explicitly grant yourself permissions this way. Don’t forget to grant yourself access. 
 
 image::../images/testing/Picture3.png[Picture3,width=648,height=439]
 
@@ -17,10 +17,10 @@ image::../images/testing/Picture3.png[Picture3,width=648,height=439]
 
 Return to the Service Catalog and choose the *Products* link at the top on the left gutter. Non-administrators who visit the Service Catalog in the console are taken directly to this location.
 
-Select the stacked dots on the Hail EMR Cluster product and choose *Launch Product*. 
+Select the stacked dots on the {partner-product-name} EMR Cluster product and choose *Launch Product*. 
 image::../images/testing/Picture4.png[Picture4,width=648,height=439]
 
-Provide a name for the Hail cluster and choose *Next* to see the following Hail cluster options.
+Provide a name for the {partner-product-name} cluster and choose *Next* to see the following {partner-product-name} cluster options.
 
 .Cluster Primary Settings
 [width="100%",cols="16%,11%,73%",options="header",]
@@ -79,7 +79,7 @@ Provide a name for the Hail cluster and choose *Next* to see the following Hail 
 |Owner Tag |'' |(Optional) - Owner of the resources. Person/Department, etc.
 |===
 
-Proceed through the Service Catalog wizard accepting default values for the *Tag Options*, *Notifications*, and *Review* phases of the wizard and then choose *Launch*.
+Proceed through the Service Catalog wizard accepting default values for the *Tag Options*, *Notifications*, and *Review* phases of the wizard, and then choose *Launch*.
 
 It will look like this while your cluster is being provisioned:
 
@@ -125,10 +125,10 @@ image::../images/testing/Launch.png[Launch,width=648,height=439]
 
 === Open the notebook, connect to the cluster, and conquer
 
-Go to Amazon SageMaker in the web console, and choose *Notebook instances* in the left gutter. You will see a notebook instance with the *name* tag you specified when you launched the notebook from the Service Catalog. Select that Notebook instance and select the *Open JupyterLab* hyperlink. 
+Go to SageMaker in the web console, and choose *Notebook instances* in the left gutter. You will see a notebook instance with the *name* tag you specified when you launched the notebook from the Service Catalog. Select that Notebook instance and select the *Open JupyterLab* hyperlink. 
 
 image::../images/testing/open_notebook.png[Open notebook,width=648,height=439]
 
-Once the notebook launches, navigate to the *common-notebooks* folder to see example Notebooks that show how to connect to the EMR cluster and begin your Hail session. 
+Once the Notebook launches, navigate to the *common-notebooks* folder to see example Notebooks that show how to connect to the EMR cluster and begin your {partner-product-name} session. 
 
 image::../images/testing/notebook.png[Notebook,width=648,height=439]
