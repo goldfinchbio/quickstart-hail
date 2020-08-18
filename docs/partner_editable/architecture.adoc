@@ -12,7 +12,7 @@ image::../images/overview.png[Overview,width=648,height=439]
 
 As shown in figure 1, the Quick Start sets up the following:
 
-* A Hail 0.2 AWS Service Catalog portfolio, allowing you to create and manage your own {partner-product-name} clusters.
+* A {partner-product-name} AWS Service Catalog portfolio, allowing you to create and manage your own {partner-product-name} clusters.
 * Four AWS CodeBuild pipelines to support building various combinations of Hail 0.2.x releases, Variant Effect Predictor (VEP) versions, and Loss-Of-Function Transcript Effect Estimator (LOFTEE) plug-ins.
 * A Hail SageMaker Notebook Instance Service Catalog product that lets you stand up and tear down JupyterLab Notebook environments that integrate with Hail clusters (through SparkMagic and Livy).
 * A Hail EMR Cluster Service Catalog product that lets you stand up and tear down {partner-product-name} clusters on Amazon EMR as needed.
