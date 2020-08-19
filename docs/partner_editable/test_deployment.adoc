@@ -68,13 +68,13 @@
 |Owner Tag |'' |(Optional) - Owner of the resources. Person/Department, etc.
 |===
 
-Proceed through the Service Catalog wizard accepting default values for the *Tag Options*, *Notifications*, and *Review* phases of the wizard, and then choose *Launch*. 
+Proceed through the Service Catalog wizard, accepting default values for the *Tag Options*, *Notifications*, and *Review* phases of the wizard. Then choose *Launch*. 
 
-The cluster will be provisioned, and the status will change to suceeded when complete. 
+The cluster is provisioned, and the status changes to suceeded when complete. 
 
 === Launch a Hail Notebook
 
-. Go back to Service Catalog’s product list page, choose the *Hail SageMaker Notebook Instance* > *Launch product*. 
+. Go back to the Service Catalog’s product list page, choose *Hail SageMaker Notebook Instance* > *Launch product*. 
 . Provide a name for your Service Catalog product launch in the *Product version* phase of the launch wizard. 
 . Supply the following parameters when you reach the *Parameters* phase.
 
