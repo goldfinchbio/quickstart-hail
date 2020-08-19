@@ -6,16 +6,16 @@ AWS Cloud.
 .Quick Start architecture for {partner-product-name} on AWS
 image::../images/hail-architecture-diagram.png[Architecture,width=648,height=439]
 
-After the Hail Service Catalog portfolio is deployed, you can spin up Notebook instances and {partner-product-name} clusters that can talk to each other through SparkMagic and Livy.
+After the Hail Service Catalog portfolio is deployed, you can spin up notebook instances and {partner-product-name} clusters that can talk to each other through Sparkmagic and Livy.
 
 image::../images/overview.png[Overview,width=648,height=439]
 
 As shown in figure 1, the Quick Start sets up the following:
 
-* A {partner-product-name} AWS Service Catalog portfolio, allowing you to create and manage your own {partner-product-name} clusters.
+* A {partner-product-name} AWS Service Catalog portfolio, allowing you to create and manage your own Hail clusters.
 * Four AWS CodeBuild pipelines to support building various combinations of Hail 0.2.x releases, Variant Effect Predictor (VEP) versions, and Loss-Of-Function Transcript Effect Estimator (LOFTEE) plug-ins.
-* A Hail SageMaker Notebook Instance Service Catalog product that lets you stand up and tear down JupyterLab Notebook environments that integrate with Hail clusters (through SparkMagic and Livy).
-* A Hail EMR Cluster Service Catalog product that lets you stand up and tear down {partner-product-name} clusters on Amazon EMR as needed.
-* A SageMaker S3 bucket to back up launched Notebook environments. 
-* An Amazon S3 bucket for staging artifacts that are related to Hail.
-* An optional VPC configured with private subnet, according to AWS best practices, to provide you with your own virtual network on AWS.
+* An Amazon SageMaker instance that lets you stand up and tear down JupyterLab notebook environments that integrate with Hail clusters (through Sparkmagic and Livy).
+* An Amazon EMR cluster that lets you stand up and tear down {partner-product-name} clusters as needed.
+* An Amazon Simple Storage Service (Amazon S3) Sagemaker bucket to back up launched notebook environments.
+* An Amazon S3 bucket for staging Hail artifacts.
+* An optional VPC configured with a private subnet, according to AWS best practices, to provide you with your own virtual network on AWS.

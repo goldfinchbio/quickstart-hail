@@ -2,11 +2,11 @@
 // Briefly describe the software. Use consistent and clear branding. 
 // Include the benefits of using the software on AWS, and provide details on usage scenarios.
 
-This Quick Start, built in collaboration with Privo IT, simplifies building, managing, and interacting with {partner-product-name} clusters in your AWS account. {partner-product-name} is an open-source library built for Apache Spark to enable scalable data exploration and analysis, with a particular emphasis on genomics.
+This Quick Start, built in collaboration with Privo, helps to simplify building, managing, and interacting with {partner-product-name} clusters in your Amazon Web Services (AWS) account. {partner-product-name} is an open-source library built for Apache Spark to provide scalable data exploration and analysis, with a particular emphasis on genomics.
 
-Using {partner-product-name}, researchers can perform genomic analysis more quickly and efficiently. {partner-product-name} makes it easy to use Spark programming techniques to process genetic data (Genomic Dataframes). It also simplifies dealing with multiple input formats by unifying into a common data structure (Hail MatrixTable). 
+Using {partner-product-name}, researchers can perform genomic analysis more quickly and efficiently. {partner-product-name} makes it easier to use Spark programming techniques to process genetic data (genomic data frames). It also helps to simplify dealing with multiple input formats by creating a common data structure (Hail MatrixTable). 
 
-This Quick Start uses Amazon EMR to power {partner-product-name} with Apache Spark to scale large datasets horizontally across numerous instances, including large production-scale genome‐wide association studies (GWAS) computation or single-node ad-hoc processing. 
+This deployment uses Amazon EMR in combination with Apache Spark to scale large datasets across instances, such as production-scale genome‐wide association studies (GWAS) and single-node ad hoc processes.
 
 {partner-product-name} is maintained by a team in the https://www.nealelab.is[Neale] lab at the https://www.broadinstitute.org/stanley[Stanley Center for Psychiatric Research] of the https://www.broadinstitute.org/[Broad Institute of MIT and Harvard] and the https://www.atgu.mgh.harvard.edu/[Analytic and Translational Genetics Unit] of https://www.massgeneral.org[Massachusetts General Hospital].
 This Quick Start packages {partner-product-name} into your AWS environment and makes it easy to spin up clusters and integrated Notebooks for analysis.
