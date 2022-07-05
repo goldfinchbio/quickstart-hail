@@ -21,14 +21,15 @@ function install_prereqs {
   java-1.8.0-openjdk \
   java-1.8.0-openjdk-devel \
   lz4 \
-  lz4-devel \
-  python36 \
-  python36-devel \
-  python36-setuptools
+  lz4-devel
 
   # Upgrade latest latest pip
-  python -m pip install --upgrade pip
+  ## python -m pip install --upgrade pip
   python3 -m pip install --upgrade pip
+
+  # Upgrade latest setuptools
+  ##python -m pip install --upgrade setuptools
+  python3 -m pip install --upgrade setuptools
 
   WHEELS="argparse
   bokeh
@@ -52,14 +53,19 @@ function install_prereqs {
   statsmodels
   umap-learn
   utils
-  wheel"
+  wheel
+  phantomjs
+  selenium
+  boto3
+  awscli
+  ipykernel
+  pyspark"
 
   for WHEEL_NAME in $WHEELS
   do
     python3 -m pip install "$WHEEL_NAME"
   done
 
-  python27 -m pip install ipykernel
 }
 
 function hail_build

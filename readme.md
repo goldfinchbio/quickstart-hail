@@ -43,7 +43,7 @@ To deploy Hail on EMR, follow these steps:
 
 1. Log into your AWS account, and access the CloudFormation console.
 
-2. Create a new stack using the following S3 URL as a template source - [https://aws-quickstart.s3.amazonaws.com/quickstart-hail/templates/hail-master.template.yaml](https://aws-quickstart.s3.amazonaws.com/quickstart-hail/templates/hail-master.template.yaml)
+2. Create a new stack using the following S3 URL as a template source - [https://privo-hail.s3.amazonaws.com/quickstart-hail/templates/hail-master.template.yaml](https://privo-hail.s3.amazonaws.com/quickstart-hail/templates/hail-master.template.yaml)
 
 3. Set parameters based on your environment and choose *Next*.
 

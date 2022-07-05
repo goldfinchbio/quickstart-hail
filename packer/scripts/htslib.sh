@@ -13,10 +13,15 @@ yum -y install \
     bzip2-devel \
     gcc72 \
     git \
+    libcurl \
     libcurl-devel \
     openssl-devel \
     xz-devel \
-    zlib-devel
+    zlib-devel 
+
+# Added due to gcc failure in Amazon Linux 2 AMI.
+# error: no acceptable C compiler found in $PATH
+yum -y groupinstall "Development Tools"
 
 if [ -z "$HTSLIB_VERSION" ]; then
     HTSLIB_VERSION="develop";

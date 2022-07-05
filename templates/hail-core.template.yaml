@@ -305,115 +305,153 @@ Resources:
   lambdaS3seed:
     Type: "AWS::Lambda::Function"
     Properties:
+      FunctionName: "hail-code-copy-lambda"
       Handler: "index.lambda_handler"
       Role: !GetAtt roleLambdaS3seed.Arn
       Code:
         ZipFile: |
           import boto3
           import os
-          import cfnresponse
-          import shutil
-
-          client = boto3.client("s3")
-          s3_packer_dest = "ami/packer.zip"
+          from zipfile import ZipFile, ZIP_DEFLATED
+          import urllib3
+          import json
 
 
-          def s3_sync_buckets(source_bucket, dest_bucket, source_prefix, directory):
-              for obj in client.list_objects_v2(
-                  Bucket=source_bucket, Prefix=source_prefix + directory
-              )["Contents"]:
-                  source_file = obj["Key"]
-                  # Omit "directories" from copy
-                  if not source_file.endswith("/"):
-                      dest_filename = os.path.split(source_file)[1]
-                      print(
-                          f"Copy s3://{source_bucket}/{source_file} => s3://{dest_bucket}/{directory}/{dest_filename}"
-                      )
-                      client.copy_object(
-                          Bucket=dest_bucket,
-                          Key=directory + "/" + dest_filename,
-                          CopySource=source_bucket + "/" + source_file,
-                      )
+          s3_client = boto3.client("s3")
+          s3_resource = boto3.resource("s3")
+          http = urllib3.PoolManager()
+
+          def cfnresponse_send(event, context, responseStatus, responseData, physicalResourceId=None, noEcho=False, reason=None):
+              responseUrl = event['ResponseURL']
+              print(responseUrl)
+
+              responseBody = {
+                  'Status' : responseStatus,
+                  'Reason' : reason or "See the details in CloudWatch Log Stream: {}".format(context.log_stream_name),
+                  'PhysicalResourceId' : physicalResourceId or context.log_stream_name,
+                  'StackId' : event['StackId'],
+                  'RequestId' : event['RequestId'],
+                  'LogicalResourceId' : event['LogicalResourceId'],
+                  'NoEcho' : noEcho,
+                  'Data' : responseData
+              }
+
+              json_responseBody = json.dumps(responseBody)
+
+              print("Response body:")
+              print(json_responseBody)
+
+              headers = {
+                  'content-type' : '',
+                  'content-length' : str(len(json_responseBody))
+              }
+
+              try:
+                  response = http.request('PUT', responseUrl, headers=headers, body=json_responseBody)
+                  print("Status code:", response.status)
 
 
-          def s3_sync_local(source_bucket, source_prefix, dest_directory):
-              for obj in client.list_objects_v2(Bucket=source_bucket, Prefix=source_prefix)[
-                  "Contents"
-              ]:
-                  source_file = obj["Key"]
-                  if source_file.endswith("/"):
-                      os.makedirs(f"{dest_directory}/{source_file}")
-                  else:
-                      local_dest_dir = f"{dest_directory}/{os.path.dirname(source_file)}"
+              except Exception as e:
 
-                      if not os.path.exists(local_dest_dir):
-                          os.makedirs(local_dest_dir)
+                  print("send(..) failed executing http.request(..):", e)
+        
 
-                      print(
-                          f"Copy s3://{source_bucket}/{source_file} => {dest_directory}/{source_file}"
-                      )
-                      client.download_file(
-                          source_bucket, source_file, f"{dest_directory}/{source_file}"
-                      )
+
+          def clone_githb_repo_locally(hail_quickstart_git_url, clone_directory):
+              try:
+                  os_command = "git clone %s %s" % (hail_quickstart_git_url, clone_directory)
+                  os.system(os_command)
+                  print("The github repo cloning completed successfully.")
+              except:
+                  raise Exception("The cloning from github repo failed. Kindly verify.")
+
+
+          def create_zip_file(input_path):
+              zip_file_name = os.path.join(input_path, "packer.zip")
+              with ZipFile(zip_file_name, 'w', ZIP_DEFLATED) as zipObj:
+                  # Iterate over all the files in directory
+                  for folderName, subfolders, filenames in os.walk(input_path):
+                      for filename in filenames:
+                          # create complete filepath of file in directory
+                          filePath = os.path.join(folderName, filename)
+                          # Add file to zip
+                          zipObj.write(filePath, os.path.basename(filePath))
+
+              zipObj.close()
+              print("The zip file created : " + str(zip_file_name))
+              return zip_file_name
+
+
+          def upload_file_to_s3(local_file, target_bucket, target_key=''):
+              target_file_key = os.path.join(target_key, os.path.basename(local_file))
+              s3_client.upload_file(local_file, target_bucket, target_file_key)
+              print("The file : %s is uploaded at : s3://%s/%s" % (local_file, target_bucket, target_key))
+
+
+          def upload_folder_to_s3(local_path, target_bucket, target_key=''):
+              for root, dirs, files in os.walk(local_path):
+                  for file in files:
+                      target_file_key = os.path.join(target_key, file)
+                      s3_client.upload_file(os.path.join(
+                          root, file), target_bucket, target_file_key)
+                      print("The File Uploaded at : s3://%s/%s" % (target_bucket, target_file_key))
+
+
+          def delete_folders(bucket_name, folder_key):
+              s3_resource.Bucket(bucket_name).objects.filter(
+                  Prefix=folder_key + "/").delete()
+              print("Folder deleted : s3://%s/%s" % (bucket_name, folder_key))
 
 
           def lambda_handler(event, context):
-              print(event)
               try:
                   source_bucket = event["ResourceProperties"]["QSS3BucketName"]
                   quickstart_prefix = event["ResourceProperties"]["QSS3KeyPrefix"]
                   hail_bucket = event["ResourceProperties"]["HailBucketName"]
                   sagemaker_bucket = event["ResourceProperties"]["SageMakerBucketName"]
-                  sync_plan = [
-                      {
-                          "source_path": quickstart_prefix + "sagemaker/",
-                          "sub_directories": ["scripts", "common-notebooks"],
-                          "dest_bucket": sagemaker_bucket,
-                      },
-                      {
-                          "source_path": quickstart_prefix,
-                          "sub_directories": ["vep-configuration"],
-                          "dest_bucket": hail_bucket,
-                      },
-                  ]
-
+                  hail_quickstart_git_url = "https://github.com/aws-quickstart/quickstart-hail.git"
+                  clone_directory = "/tmp/github_repo/hail-emr/"
+                  
                   if event["RequestType"] in ["Create", "Update"]:
+                      # Clone the github repo
+                      clone_githb_repo_locally(hail_quickstart_git_url, clone_directory)
 
-                      for obj in sync_plan:
-                          for directory in obj["sub_directories"]:
-                              s3_sync_buckets(
-                                  source_bucket, obj["dest_bucket"], obj["source_path"], directory
-                              )
+                      # Zip the packer file.
+                      create_zip_file("%spacker" % clone_directory)
 
-                      # Copy quickstart packer directory to local file system.
-                      packer_dir = f"/tmp/{quickstart_prefix}packer"
-                      s3_sync_local(source_bucket, quickstart_prefix + "packer/", "/tmp")
+                      # Upload files from local to corresponding S3 Buckets
+                      # Upload packer.zip to QSS3BucketName/ami/packer.zip
+                      upload_file_to_s3(local_file="%spacker/packer.zip" % clone_directory, target_bucket=hail_bucket, target_key="ami")
 
-                      # Zip and seed user's Hail bucket for custom AMI builds.
-                      zip_name = shutil.make_archive("/tmp/packer", "zip", packer_dir)
-                      f = open(zip_name, "rb")
-                      zip_contents = f.read()
-                      f.close()
-                      client.put_object(Body=zip_contents, Bucket=hail_bucket, Key=s3_packer_dest)
-                      print(f"Copy {zip_name} to s3://{hail_bucket}/{s3_packer_dest}")
-                      shutil.rmtree(f"/tmp/{quickstart_prefix}")
+                      # Upload scripts and common notebooks to sagemaker bucket
+                      upload_folder_to_s3(local_path="%ssagemaker/common-notebooks" % clone_directory,
+                                          target_bucket=sagemaker_bucket, target_key="common-notebooks")
+                      upload_folder_to_s3(local_path="%ssagemaker/scripts" % clone_directory,
+                                          target_bucket=sagemaker_bucket, target_key="scripts")
 
                       rdata = {"Status": "SUCCESS"}
-                      cfnresponse.send(event, context, cfnresponse.SUCCESS, rdata)
-
+                      cfnresponse_send(event, context, "SUCCESS", rdata)
                   elif event["RequestType"] == "Delete":
-
                       print("Delete Request by CFN...")
+                      folder_details = [
+                          {'bucket_name': hail_bucket, 'folder_key': 'ami'},
+                          {'bucket_name': sagemaker_bucket, 'folder_key': "common-notebooks"},
+                          {'bucket_name': sagemaker_bucket, 'folder_key': "scripts"}
+                      ]
+                      for record in folder_details:
+                          delete_folders(record['bucket_name'], record['folder_key'])
+
                       rdata = {"Status": "Success"}
-                      cfnresponse.send(event, context, cfnresponse.SUCCESS, rdata)
+                      cfnresponse_send(event, context, "SUCCESS", rdata)
 
               except Exception as e:
-
                   print("[ERROR] - %s" % str(e))
                   rdata = {"Error": "Could not perform the operation"}
-                  cfnresponse.send(event, context, cfnresponse.FAILED, rdata)
+                  cfnresponse_send(event, context, "FAILED", rdata)
 
       Runtime: "python3.7"
+      Layers:
+        - !Sub "arn:aws:lambda:${AWS::Region}:553035198032:layer:git:14"
       Timeout: 300
 
   lambdaS3seedPermission:
@@ -424,6 +462,7 @@ Resources:
       FunctionName: !GetAtt lambdaS3seed.Arn
 
   lambdaS3seedInvoke:
+    DependsOn: lambdaS3seed
     Type: "Custom::InvokeLambdaFunction"
     Properties:
       QSS3BucketName: !Ref QSS3BucketName
@@ -453,4 +492,3 @@ Outputs:
   bucketSageMaker:
     Description: "SageMaker S3 Bucket"
     Value: !GetAtt stackS3.Outputs.bucketSageMaker
-

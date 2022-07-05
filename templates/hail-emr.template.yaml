@@ -328,9 +328,7 @@ Parameters:
     Type: "String"
 
   pEmrReleaseLabel:
-    AllowedValues:
-      - "emr-5.29.0"
-    Default: "emr-5.29.0"
+    Default: "emr-6.3.1"
     Description: ""
     Type: "String"
 
@@ -389,6 +387,11 @@ Parameters:
       - "/hail/vpc/id"
     Type: "AWS::SSM::Parameter::Value<String>"
 
+  pKeyName:
+    Description: "(Optional) The EC2 Key value pair"
+    Type: "AWS::EC2::KeyPair::KeyName"
+    Default: "NA"
+
 Metadata:
 
   AWS::CloudFormation::Interface:
@@ -410,6 +413,7 @@ Metadata:
           - "pHailBucket"
           - "pEmrInstanceTerminationProtection"
           - "pAllowSsmShell"
+          - "pKeyName"
       - Label:
           default: "Master Instance Configuration"
         Parameters:
@@ -475,6 +479,8 @@ Metadata:
         default: "Market"
       pVpcId:
         default: "VPC ID"
+      pKeyName:
+        default: "Instance KeyPair"
 
 Mappings:
 
@@ -517,6 +523,7 @@ Conditions:
   CondEnableEncryption: !Not [ !Equals [ !Ref pKmsEbsArn, "" ] ]
   CondCreateTaskNodes:  !Not [ !Equals [ !Ref pEmrMaxTaskNodeCount, "0" ] ]
   CondCustomAmi: !Not [ !Equals [ !Ref pAmi, "" ] ]
+  CondHasKeyName: !Not [ !Equals [ !Ref pKeyName, "NA"] ]
 
 Resources:
 
@@ -582,6 +589,7 @@ Resources:
           - !Ref sgEmrMasterAccess
         AdditionalSlaveSecurityGroups:
           - !Ref sgEmrSlaveAccess
+        Ec2KeyName: !If [CondHasKeyName, !Ref pKeyName, !Ref 'AWS::NoValue']
         Ec2SubnetId: !Ref pSubnetId
         MasterInstanceGroup:
           InstanceCount: 1
